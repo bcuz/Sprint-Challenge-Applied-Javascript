@@ -7,9 +7,11 @@ class Carousel {
         
         this.right = this.element.querySelector('.right-button')
         this.left = this.element.querySelector('.left-button')
-        this.index = 0
+        this.images[0].style.display = 'flex'      
+        this.index = 1
 
         this.right.addEventListener('click', () => this.moveRight());
+        this.left.addEventListener('click', () => this.moveLeft());
         
     }
 
@@ -18,8 +20,24 @@ class Carousel {
         this.images.forEach(img => img.style.display = 'none')
 
         this.images[this.index].style.display = 'flex'      
+
+        if (this.index === this.images.length - 1) {
+            this.index = 0
+        } else {
+            this.index += 1
+        }
         
-        this.index++
+    }
+
+    moveLeft() {
+        
+        this.index -= 2
+        console.log(this.index);
+        
+        
+        this.images.forEach(img => img.style.display = 'none')
+        this.images[this.index].style.display = 'flex'      
+
     }
 }
 
